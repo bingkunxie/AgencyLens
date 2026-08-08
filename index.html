@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AgencyLens</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">AL</div>
+        <div>
+          <h1>AgencyLens</h1>
+          <p>Human-AI reliance study workbench</p>
+        </div>
+      </div>
+      <nav class="tabs" aria-label="Primary views">
+        <button class="tab-button active" type="button" data-tab="study">Study Runner</button>
+        <button class="tab-button" type="button" data-tab="console">Research Console</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="view active" id="study-view" aria-labelledby="study-title">
+        <aside class="side-panel" aria-label="Session setup">
+          <div class="panel-section">
+            <h2 id="study-title">Session</h2>
+            <label for="participant-id">Participant ID</label>
+            <input id="participant-id" autocomplete="off" placeholder="P001">
+
+            <label for="study-seed">Study seed</label>
+            <input id="study-seed" autocomplete="off" value="AGENCY-LENS">
+
+            <div class="button-row">
+              <button class="primary-button" type="button" id="start-session">Start</button>
+              <button class="secondary-button" type="button" id="reset-session">Reset</button>
+            </div>
+          </div>
+
+          <div class="panel-section">
+            <h2>Progress</h2>
+            <div class="progress-shell" aria-label="Session progress">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-copy" id="progress-copy">No active session</p>
+            <div class="condition-stack" id="condition-stack"></div>
+          </div>
+        </aside>
+
+        <section class="workspace" aria-live="polite">
+          <div class="status-line" id="status-line">Start a session to begin the study flow.</div>
+          <article class="case-panel" id="case-panel"></article>
+        </section>
+      </section>
+
+      <section class="view" id="console-view" aria-labelledby="console-title">
+        <div class="console-grid">
+          <section class="console-panel">
+            <h2 id="console-title">Study Configuration</h2>
+            <div class="config-grid">
+              <label for="console-seed">Preview seed</label>
+              <input id="console-seed" value="AGENCY-LENS">
+              <button class="secondary-button" type="button" id="preview-order">Preview Order</button>
+            </div>
+            <div class="order-preview" id="order-preview"></div>
+          </section>
+
+          <section class="console-panel">
+            <div class="panel-heading">
+              <h2>Collected Logs</h2>
+              <span id="log-count">0 trials</span>
+            </div>
+            <div class="button-row">
+              <button class="primary-button" type="button" id="export-json">Export JSON</button>
+              <button class="secondary-button" type="button" id="export-csv">Export CSV</button>
+              <button class="danger-button" type="button" id="clear-logs">Clear Logs</button>
+            </div>
+          </section>
+
+          <section class="console-panel wide-panel">
+            <h2>Metrics</h2>
+            <div class="metrics-grid" id="metrics-grid"></div>
+          </section>
+
+          <section class="console-panel wide-panel">
+            <div class="panel-heading">
+              <h2>Protocol Card</h2>
+              <button class="secondary-button" type="button" id="copy-protocol">Copy Protocol</button>
+            </div>
+            <div class="protocol-card" id="protocol-card"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="logic.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
